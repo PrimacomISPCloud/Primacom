@@ -11,7 +11,7 @@
         required: true
 
   tasks:
-    - name: Jalankan ping ke {{ ping_dest | default(input_schema.ping_dest.default) }}
+    - name: Jalankan ping ke {{ ping_dest }}
       junipernetworks.junos.junos_command:
         commands:
           - "ping {{ ping_dest | default(input_schema.ping_dest.default) }} count 5"
