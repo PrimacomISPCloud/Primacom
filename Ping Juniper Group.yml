@@ -8,8 +8,7 @@
       ping_dest:
         label: "Ping Destination"
         type: string
-        required: true
-
+        
   tasks:
     - name: Jalankan ping ke {{ ping_dest }}
       junipernetworks.junos.junos_command:
