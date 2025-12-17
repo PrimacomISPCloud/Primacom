@@ -12,16 +12,11 @@
         default: "8.8.8.8"
 
   tasks:
-    - name: Set ping_dest from schema default if missing
-      set_fact:
-        ping_dest: "{{ ping_dest | default(input_schema.ping_dest.default) }}"
-
-    - name: Jalankan ping ke {{ ping_dest }}
+    - name: Jalankan ping ke {{ ping_dest | default(input_schema.ping_dest.default) }}
       junipernetworks.junos.junos_command:
         commands:
-          - "ping {{ ping_dest }} count 5"
+          - "ping {{ ping_dest | default(input_schema.ping_dest.default) }} count 5"
       register: ping_result
 
-    - name: Output result
-      debug:
+    - debug:
         var: ping_result.stdout_lines
