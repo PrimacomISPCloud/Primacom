@@ -9,7 +9,6 @@
         label: "Ping Destination"
         type: string
         required: true
-        default: "8.8.8.8"
 
   tasks:
     - name: Jalankan ping ke {{ ping_dest | default(input_schema.ping_dest.default) }}
